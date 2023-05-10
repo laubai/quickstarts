@@ -1,0 +1,170 @@
+metadata:
+  name: rosa-get-started-create-cluster-cli
+  # you can add additional metadata here
+  instructional: true
+spec:
+  displayName:  "Get started: Create a ROSA cluster using the CLI"
+  durationMinutes: 30
+  type:
+    text: "Get started"
+    color: green
+  # - The icon defined as a base64 value. Example flow:
+  # 1. Find an .svg you want to use, like from here: https://www.patternfly.org/v4/guidelines/icons/#all-icons
+  # 2. Upload the file here and encode it (output format - plain text): https://base64.guru/converter/encode/image
+  # 3. compose - `icon: data:image/svg+xml;base64,<base64 string from step 2>`
+  # - If empty string (icon: ''), will use a default rocket icon
+  # - If set to null (icon: ~) will not show an icon
+  icon: data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTQ0OCA2NHY0MTZoLTMzNmMtMjYuNTEzIDAtNDgtMjEuNDktNDgtNDhzMjEuNDg3LTQ4IDQ4LTQ4aDMwNHYtMzg0aC0zMjBjLTM1LjE5OSAwLTY0IDI4LjgtNjQgNjR2Mzg0YzAgMzUuMiAyOC44MDEgNjQgNjQgNjRoMzg0di00NDhoLTMyeiI+PC9wYXRoPgo8cGF0aCBkPSJNMTEyLjAyOCA0MTZ2MGMtMC4wMDkgMC4wMDEtMC4wMTkgMC0wLjAyOCAwLTguODM2IDAtMTYgNy4xNjMtMTYgMTZzNy4xNjQgMTYgMTYgMTZjMC4wMDkgMCAwLjAxOS0wLjAwMSAwLjAyOC0wLjAwMXYwLjAwMWgzMDMuOTQ1di0zMmgtMzAzLjk0NXoiPjwvcGF0aD4KPC9zdmc+Cg==
+  #prerequisites:
+    #- You have a Red Hat account.
+  description: |-
+    Complete Red Hat and Amazon prerequisites and install your first Red Hat OpenShift Service on AWS cluster.
+  introduction: |-
+    This quickstart shows you how to prepare and install your first Red Hat OpenShift Service on AWS (ROSA) cluster, so that you can start exploring ROSA functionality.
+  tasks:
+    - title: Get an AWS account
+      description: |-
+        You need an AWS account to use Red Hat OpenShift Service on AWS.
+
+        ## Do you already have an AWS account?
+
+        You can skip to the next task in this quickstart.
+
+        ## Sign up for a new AWS account
+
+        1. Open the [Amazon signup page](https://portal.aws.amazon.com/billing/signup) in a new browser tab.
+        1. Enter an email address and account name in the fields provided, then click *Verify email address*.
+
+          A verification code is sent to the email address you provided.
+        1. Enter the verification code to verify your email address.
+        1. Follow the prompts to complete account registration.
+      review:
+        instructions: |-
+          - Can you log in to your AWS account?
+        failedTaskHelp: Review the [Frequently Asked Questions for AWS Registration](https://aws.amazon.com/free/registration-faqs/) or contact Amazon for assistance with this task before continuing.
+    - title: Verify AWS prerequisites
+      description: |-
+        Log in to AWS and use the tools on the _Verify ROSA prerequisites_ page to confirm that your AWS account is ready to deploy ROSA.
+
+        1. Log in to the [AWS Management Console](https://console.aws.amazon.com/).
+        1. Navigate to the [ROSA Service](https://console.aws.amazon.com/rosa/home).
+        1. Click *Get started*.
+        
+          This opens the _Verify ROSA prerequisites_ page.
+        1. Under *ROSA enablement*, select the checkbox beside *I agree to share my contact information with Red Hat* and click *Enable ROSA*.
+          
+          After a short wait, a green check mark and You enabled ROSA message are displayed. 
+        1. Under *Service Quotas*, ensure that a green check and *Your quotas meet the requirements for ROSA* are displayed.
+          
+          If you see *Your quotas don’t meet the minimum requirements*, take note of the quota type and the minimum listed in the error message. See Amazon’s documentation on [requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for guidance. Note that it may take several hours for Amazon to approve your quota request.
+        1. Under *ELB service-linked role*, ensure that a green check mark and *AWSServiceRoleForElasticLoadBalancing already exists* are displayed.
+        1. Click *Continue to Red Hat*.
+        
+          This opens the [Get started with Red Hat OpenShift Service on AWS (ROSA)](https://console.redhat.com/openshift/create/rosa/getstarted) page in a new tab.
+      review:
+        instructions: |-
+          - Did all checks on the _Verify ROSA prerequisites_ page complete successfully?
+        failedTaskHelp: Check Amazon's [troubleshooting documentation for ROSA](https://docs.aws.amazon.com/ROSA/latest/userguide/troubleshoot-rosa-enablement.html#error-aws-orgs-scp-denies-permissions) for assistance resolving any issues and try this task again.
+    - title: Verify Red Hat prerequisites
+      description: |-
+        Follow the instructions on the [Get started with Red Hat OpenShift Service on AWS (ROSA)](https://console.redhat.com/openshift/create/rosa/getstarted) page to install the required command line tools and set up the required account roles between Red Hat and Amazon.
+
+        ## Install the ROSA CLI
+
+        1. Click **Download the ROSA CLI** to download the tool as an archive.
+        1. Extract the tool from the archive:
+
+          ```tar xvf rosa-linux.tar.gz```
+        1. Move the extracted binary file into your path, for example, `/usr/local/bin`:
+
+          ```sudo mv rosa /usr/local/bin/rosa```
+        
+        **Verification:**
+        In a new terminal, check that the tool is installed:
+        ```rosa version```
+
+        ## Install the AWS CLI
+
+        1. Click **Download the AWS CLI** to download the tool as an archive.
+        1. Extract the tool from the archive:
+
+          ```unzip awscliv2.zip```
+        1. Run the AWS install tool:
+
+          ```sudo ./aws/install```
+        
+        **Verification:**
+        Check that the tool is installed:
+
+        ```aws --version```
+
+        ## Log in and verify your account
+
+        1. Log in to the ROSA CLI by copying the `rosa login` command into your terminal.
+        1. Verify your credentials:
+
+          ```rosa whoami```
+        1. Verify your AWS account has enough quota to deploy a ROSA cluster:
+
+          ```rosa verify quota```
+
+        ## Create account roles and policies
+
+        1. Create the required account roles and policies:
+
+          ```rosa create account-roles --mode auto```
+
+        **Verification:**
+        Check that the new roles were created and linked:
+        ```rosa list account-roles```
+      review:
+        instructions: |-
+          - Did the ROSA CLI install correctly?
+          - Did the AWS CLI install correctly?
+          - Does your account have sufficient quota to deploy ROSA in your chosen region?
+          - Were the account roles created and linked?
+        failedTaskHelp: Try the steps again, taking note of any errors. Contact support if errors persist.
+    - title: Install ROSA using the ROSA CLI
+      description: |-
+        The ROSA CLI has an interactive mode to make it easier to install a cluster for the first time. Once you have provided all information, cluster installation takes about 30 minutes.
+
+        1. Start an interactive installation.
+
+          This quickstart uses the AWS Security Token Service (STS) for simplicity, but you can also use AWS PrivateLink.
+
+          ```rosa create cluster --interactive --sts```
+        1. At the prompts, enter information about the cluster and press Enter to confirm the information is correct.
+
+          If you are happy with the default value shown in square brackets, press enter to accept it.
+
+        1. When you have provided valid information for all prompts, cluster creation begins.
+
+          The ROSA CLI also outputs a `rosa create` command that you can use to quickly recreate this cluster in future.
+        1. Go to [Hybrid Cloud Console](https://console.redhat.com/openshift/) and enable the **View only my clusters** toggle.
+          You can click the name of your cluster to go to the Cluster Details page and watch your cluster install.
+      review:
+        instructions: |-
+          - Do you see your cluster installing on [Hybrid Cloud Console](https://console.redhat.com/openshift/)?
+          - Did your cluster finish installing?
+        failedTaskHelp: Correct any errors in your command line output and cluster logs and try this task again.
+    - title: Create an administrative user for quick cluster access
+      description: |-
+        You can create a user with `cluster-admin` privileges for immediate access to your ROSA cluster without adding another identity provider.
+
+        ## Create a cluster administrator for quick cluster access
+
+        1. Create a cluster administrator user for your cluster:
+
+          ```rosa create admin --cluster=<cluster_name>```
+        1. Check the output of the above command for the account password and login command for this user. Store this information securely for future reference.
+        1. Wait a few minutes, then use the `rosa login` command to confirm the user account was created successfully.
+      review:
+        instructions: |-
+          - Can you log in using the output `rosa login` command?
+        failedTaskHelp: Refer to the [ROSA documentation](https://access.redhat.com/documentation/en-us/red_hat_openshift_service_on_aws/4/html/getting_started/rosa-quickstart-guide-ui#rosa-getting-started-create-cluster-admin-user_rosa-quickstart-guide-ui) for more information and try this task again.
+  conclusion: |-
+    You have now deployed your first Red Hat OpenShift Service on AWS cluster and added an administrative user for quick cluster access. Next you can add an identity provider to your cluster or try deploying a test application.
+  # you can link to the next quick start(s) here
+  nextQuickStart:
+    - rosa-add-identity-provider
+    - rosa-deploy-application

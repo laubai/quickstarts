@@ -1,0 +1,7 @@
+kind: QuickStarts # kind must always be "QuickStarts"
+name: rosa-get-started-create-cluster-cli
+tags: # If you want to use more granular filtering add tags to the quickstart
+  - kind: bundle
+	value: openshift
+  - kind: bundle
+	value: landing
